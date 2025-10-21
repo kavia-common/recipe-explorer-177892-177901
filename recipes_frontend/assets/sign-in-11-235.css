@@ -1,0 +1,368 @@
+:root {
+  /* Ocean Professional subtle accents without altering Figma measurements */
+  --ocean-primary: #2563EB; /* blue */
+  --ocean-amber: #F59E0B;   /* amber accent */
+  --ocean-text: #111827;    /* near-black */
+  --ocean-surface: #ffffff;
+  --ocean-background: #f9fafb;
+  --divider: #E5E7EB; /* light gray lines, aligned to style_28 */
+  --muted: #6B7280;   /* used for secondary text if needed */
+}
+
+/* Centering wrapper to keep the 375x812 artboard centered on any viewport */
+.screen-center {
+  min-height: 100vh;
+  background: var(--ocean-background);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* Root screen frame based on JSON: width 375, height 812; background color_ffffff */
+.screen-11-235 {
+  position: relative;
+  width: 375px;
+  height: 812px;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  border-radius: 0; /* No border radius indicated by JSON for the frame */
+  color: var(--ocean-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif; /* Fallbacks */
+}
+
+/* Status Bar (frame: 375x44 at top). Exact placement y:-430 in JSON corresponds to top of frame; we pin to top. */
+.status-bar {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 375px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px; /* approximate based on time 22px height block; aligns visuals */
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.status-bar .symbols {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.status-bar .battery img {
+  display: inline-block;
+  height: 9.5px;
+}
+.status-bar .signal img {
+  display: inline-block;
+  height: 10.7px;
+}
+.status-bar .wifi {
+  width: 0; height: 0; /* vector without explicit image paths; keep hidden */
+}
+
+.status-bar .time {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  left: 16px; /* x aligns near left; JSON shows time container 426->x for frame; we set typical */
+  font-size: 15px; /* derived from iOS status bar typical size */
+  line-height: 18px;
+  font-weight: 600;
+  color: var(--ocean-text);
+}
+
+/* Title Group: "Hello," at y:-336 and "Welcome Back!" at y:-291 relative to frame top (44px consumed by status bar).
+   The JSON uses absolute coordinates; we place using absolute to preserve spacing. */
+.title-group {
+  position: absolute;
+  left: 30px; /* 456 - 426 = 30px from left of screen */
+  top: 94px; /* 44 status + ( -336 - (-430) ) => 94 to approximate; exact from JSON: y:-336 within frame where frame y:-430; delta 94 */
+  width: 315px;
+  height: 75px;
+}
+.hello {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0;
+  /* Typography from typo_60 (approx based on 45px height): */
+  font-size: 36px; /* chosen to fit 45px height text box */
+  line-height: 45px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--ocean-text);
+}
+.welcome {
+  position: absolute;
+  top: 45px; /* next line down to reach total 75 height */
+  left: 0px;
+  margin: 0;
+  /* Typography from typo_61 (height 30): */
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ocean-text);
+}
+
+/* Form wrapper spans input areas and below content */
+.signin-form {
+  position: absolute;
+  left: 30px; /* 456 - 426 */
+  top: 226px; /* From Email field label y:-204 aligned after title; compute: title top 94 + 75 = 169; email label top about 226 for precise pixel layout */
+  width: 315px;
+}
+
+/* Field shared styles */
+.field {
+  position: relative;
+  width: 315px;
+  height: 81px; /* from JSON */
+  margin: 0 0 30px 0;
+}
+.field-label {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0;
+  /* From typo_66; 21px height suggests ~14px size with 1.5 line-height */
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: var(--ocean-text);
+}
+.field-box {
+  position: absolute;
+  left: 0px;
+  top: 26px; /* 81 total height: label 21 + ~5 spacing = 26 */
+  width: 315px;
+  height: 55px; /* Rectangle height from JSON */
+  border-radius: 12px; /* style_30 likely rounded input; set subtle rounding */
+  border: 1px solid #E5E7EB; /* light gray border */
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 16px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.02);
+}
+.field-box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px; /* typo_65 */
+  line-height: 17px;
+  color: var(--ocean-text);
+  background: transparent;
+}
+.field-box input::placeholder {
+  color: #6B7280; /* style_29 muted text */
+}
+
+/* Password toggle button inside input */
+.toggle-password {
+  margin-left: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  color: #6B7280;
+  padding: 6px;
+  border-radius: 6px;
+}
+.toggle-password:focus-visible {
+  outline: 2px solid var(--ocean-amber);
+  outline-offset: 2px;
+}
+
+/* Forgot Password group from JSON at x:466 y:8 relative to some baseline; place below password field as per visual */
+.forgot-password {
+  position: absolute;
+  left: 10px; /* The link text box starts a bit inset inside input area; visually aligned */
+  top: 202px; /* 2 fields * 81 = 162 + ~40 spacing => 202 to match JSON y:8 after password block mapping */
+  width: 295px;
+  height: 17px;
+}
+.forgot-link {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  color: var(--ocean-primary);
+  text-decoration: none;
+}
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Big Button: 315x60 at y:50 from JSON group relative mapping; place under forgot link */
+.big-button {
+  position: absolute;
+  left: 0px;
+  top: 231px; /* Forgot 17px height + ~12 spacing => 231 */
+  width: 315px;
+  height: 60px;
+  border: none;
+  border-radius: 14px; /* style_11 suggests rounded CTA */
+  background: var(--ocean-primary);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(37,99,235,0.25); /* subtle ocean theme accent */
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.big-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(37,99,235,0.30);
+}
+.big-button:active {
+  transform: translateY(0);
+}
+.big-button-label {
+  font-size: 18px; /* typo_58 ~24px height box => 18 size with 24 line */
+  line-height: 24px;
+  font-weight: 700;
+}
+.big-button-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Divider: "Or Sign in With" with lines 50px on each side from JSON */
+.divider {
+  position: absolute;
+  left: -14px; /* screen left is 30px; line left x in JSON ~516 => 90px from screen; align inside form */
+  top: 310px; /* Based on JSON: 'Line' group y:130 relative to frame -> mapping here after CTA */
+  width: 343px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.divider-line {
+  display: inline-block;
+  width: 50px;
+  height: 1px;
+  background: var(--divider);
+}
+.divider-text {
+  font-size: 14px;
+  line-height: 17px;
+  color: #6B7280; /* style_29 */
+}
+
+/* Social buttons row: Two 44x44 buttons positioned at y:167 (relative to frame). Map below divider */
+.social-row {
+  position: absolute;
+  left: 101px; /* First social at x:557; screen x:426 => 131; form left is 30 so 131-30 = 101 */
+  top: 344px; /* Approx mapping of y:167 after CTA+divider in local form coords */
+  width: 113px; /* 44 + 25 gap + 44; as per visual spacing */
+  height: 44px;
+  display: flex;
+  gap: 25px;
+}
+.social-btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.social-btn:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.social-btn-bg {
+  position: absolute;
+  inset: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  pointer-events: none;
+}
+.social-icon {
+  width: 20px;
+  height: 20px;
+}
+.google .google-icon {
+  width: 20px;
+  height: 20px;
+}
+.google .google-icon-2 {
+  position: absolute;
+  width: 10px;
+  height: 9.41px;
+  right: 7px; /* aligns with JSON inner vector */
+  top: 10px;
+  pointer-events: none;
+}
+.facebook .facebook-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Sign up hint at y:266 in JSON relative to frame; mapped under social row */
+.signup-hint {
+  position: absolute;
+  left: 69px; /* Screen x:525 => 99 from screen; 99 - 30 form left = 69 */
+  top: 395px; /* mapped from JSON y:266 after previous elements */
+  width: 177px;
+  height: 17px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--ocean-text);
+  text-align: center;
+}
+.signup-link {
+  color: var(--ocean-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* Home Indicator at bottom (height 34) with 135x5 rounded line centered */
+.home-indicator {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 375px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+}
+.home-line {
+  width: 135px;
+  height: 5px;
+  background: #E5E7EB; /* style_32 approximate */
+  border-radius: 2.5px;
+  opacity: 0.9;
+}
+
+/* Accessibility focus styles */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--ocean-amber);
+  outline-offset: 2px;
+}
+
+/* Notes:
+   - Font families: JSON references typography refs. System fallbacks added above; if exact custom fonts are required,
+     they must be supplied separately. We maintained sizes/line-heights to match Figma bounding boxes.
+   - All px values chosen to reflect bounding boxes and relative positioning from the JSON while mapping to a static artboard. */

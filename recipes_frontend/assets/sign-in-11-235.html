@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign In - Screen 11:235</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Pixel-perfect CSS for this screen -->
+  <link rel="stylesheet" href="./sign-in-11-235.css" />
+</head>
+<body>
+  <!-- Responsive centering wrapper while preserving inner pixel grid -->
+  <div class="screen-center">
+    <!-- Root frame exactly 375x812 from JSON -->
+    <main class="screen-11-235" role="main" aria-label="Sign In screen">
+      <!-- Status Bar (top iOS bar) -->
+      <div class="status-bar" aria-hidden="true">
+        <div class="symbols">
+          <div class="battery">
+            <img src="/assets/figmaimages/figma_image_13_71_128_306_b5e63c63.svg" alt="" />
+            <img src="/assets/figmaimages/figma_image_13_71_128_307_97b3d1ff.svg" alt="" />
+          </div>
+          <div class="signal">
+            <img src="/assets/figmaimages/figma_image_13_71_128_311_74e08aed.svg" alt="Cellular signal bar 1" />
+            <img src="/assets/figmaimages/figma_image_13_71_128_312_4153a623.svg" alt="Cellular signal bar 2" />
+            <img src="/assets/figmaimages/figma_image_13_71_128_313_a9f566ce.svg" alt="Cellular signal bar 3" />
+            <img src="/assets/figmaimages/figma_image_13_71_128_314_664f77c4.svg" alt="Cellular signal bar 4" />
+          </div>
+          <div class="wifi" aria-hidden="true"></div>
+        </div>
+        <div class="time" aria-label="device time">19:27</div>
+      </div>
+
+      <!-- Title Group -->
+      <header class="title-group">
+        <h1 class="hello" aria-level="1" role="heading">Hello,</h1>
+        <p class="welcome">Welcome Back!</p>
+      </header>
+
+      <!-- Email Field -->
+      <form class="signin-form" aria-label="Sign in form" novalidate>
+        <div class="field email-field">
+          <label for="email-input" class="field-label">Email</label>
+          <div class="field-box">
+            <input id="email-input" name="email" type="email" aria-label="Email" placeholder="Enter Email" />
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="field password-field">
+          <label for="password-input" class="field-label">Enter Password</label>
+          <div class="field-box">
+            <input id="password-input" name="password" type="password" aria-label="Password" placeholder="Enter Password" />
+            <button type="button" class="toggle-password" aria-label="Show password" aria-pressed="false" title="Show/Hide password">👁️</button>
+          </div>
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="forgot-password">
+          <a href="#" class="forgot-link">Forgot Password?</a>
+        </div>
+
+        <!-- Big Button -->
+        <button type="submit" class="big-button" aria-label="Sign In">
+          <span class="big-button-label">Sign In</span>
+          <img class="big-button-icon" src="/assets/figmaimages/figma_image_54_668_53_625_ee410d62.svg" alt="" aria-hidden="true" />
+        </button>
+
+        <!-- Or Sign In With divider -->
+        <div class="divider">
+          <span class="divider-line left"></span>
+          <span class="divider-text">Or Sign in With</span>
+          <span class="divider-line right"></span>
+        </div>
+
+        <!-- Social Buttons -->
+        <div class="social-row" role="group" aria-label="Sign in with social accounts">
+          <!-- Google -->
+          <button type="button" class="social-btn google" aria-label="Sign in with Google">
+            <img class="social-btn-bg" src="/assets/figmaimages/figma_image_13_36_33a0897e.svg" alt="" aria-hidden="true" />
+            <img class="social-icon google-icon" src="/assets/figmaimages/figma_image_13_39_ffad8cec.svg" alt="Google logo" />
+            <img class="social-icon google-icon-2" src="/assets/figmaimages/figma_image_13_42_83962b79.svg" alt="" aria-hidden="true" />
+          </button>
+
+          <!-- Facebook -->
+          <button type="button" class="social-btn facebook" aria-label="Sign in with Facebook">
+            <!-- The JSON doesn't provide a BG image for this button; style matches via CSS -->
+            <img class="social-icon facebook-icon" src="/assets/figmaimages/figma_image_13_58_e6c4938f.svg" alt="Facebook logo" />
+          </button>
+        </div>
+
+        <!-- Sign Up prompt -->
+        <p class="signup-hint">
+          Don’t have an account? <a href="#" class="signup-link" aria-label="Sign up">Sign up</a>
+        </p>
+      </form>
+
+      <!-- Home Indicator -->
+      <div class="home-indicator" aria-hidden="true">
+        <div class="home-line"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="./sign-in-11-235.js"></script>
+</body>
+</html>
